@@ -1,3 +1,9 @@
+# revision 15878
+# category Package
+# catalog-ctan /macros/latex/contrib/draftcopy
+# catalog-date 2009-09-25 22:54:35 +0200
+# catalog-license lppl
+# catalog-version 2.16
 Name:		texlive-draftcopy
 Version:	2.16
 Release:	1
@@ -66,6 +72,7 @@ usage, consider the wallpaper or draftwatermark packages.
 %doc %{_texmfdistdir}/source/latex/draftcopy/Makefile
 %doc %{_texmfdistdir}/source/latex/draftcopy/draftcopy.dtx
 %doc %{_texmfdistdir}/source/latex/draftcopy/draftcopy.ins
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -76,3 +83,5 @@ usage, consider the wallpaper or draftwatermark packages.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
