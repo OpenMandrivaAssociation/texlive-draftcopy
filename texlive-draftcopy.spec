@@ -18,9 +18,6 @@ BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
-Conflicts:	texlive-texmf <= 20110705-3
-Conflicts:	texlive-doc <= 20110705-3
-Conflicts:	texlive-source <= 20110705-3
 
 %description
 Places the word DRAFT (or other words) in light grey diagonally
@@ -29,20 +26,12 @@ pages of the document. The package uses PostScript \special
 commands, and may not therefore be used with PDFLaTeX. For that
 usage, consider the wallpaper or draftwatermark packages.
 
-%pre
-    %_texmf_mktexlsr_pre
-
 %post
-    %_texmf_mktexlsr_post
-
-%preun
-    if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_pre
-    fi
+    %{_sbindir}/texlive.post
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_post
+	%{_sbindir}/texlive.post
     fi
 
 #-----------------------------------------------------------------------
@@ -73,7 +62,6 @@ usage, consider the wallpaper or draftwatermark packages.
 %doc %{_texmfdistdir}/source/latex/draftcopy/Makefile
 %doc %{_texmfdistdir}/source/latex/draftcopy/draftcopy.dtx
 %doc %{_texmfdistdir}/source/latex/draftcopy/draftcopy.ins
-%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -84,5 +72,3 @@ usage, consider the wallpaper or draftwatermark packages.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-mkdir -p %{buildroot}%{_tlpkgobjdir}
-cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
