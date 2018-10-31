@@ -6,7 +6,7 @@
 # catalog-version 2.16
 Name:		texlive-draftcopy
 Version:	2.16
-Release:	10
+Release:	11
 Summary:	Identify draft copies
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/draftcopy
